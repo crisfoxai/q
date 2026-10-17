@@ -1,0 +1,25 @@
+{
+ "actualizado": "2026-10-17T11:43-03:00",
+ "cuentas": [],
+ "misiones": [
+  {
+   "id": "reel01-qr",
+   "titulo": "Escanea el QR del reel del QR roto y comenta la frase secreta",
+   "puntos": 10,
+   "publicaciones": [
+    {
+     "red": "instagram",
+     "url": "https://www.instagram.com/reel/DelPZERiFMS/"
+    },
+    {
+     "red": "tiktok",
+     "url": "https://www.tiktok.com/@eltrucoescondido/video/7697488760069426439"
+    },
+    {
+     "red": "youtube",
+     "url": "https://youtube.com/shorts/C_sHQgHAlLo"
+    }
+   ]
+  }
+ ]
+}

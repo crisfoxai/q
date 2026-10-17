@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ranking · El truco escondido</title>
+<meta name="description" content="Ranking de misiones de El truco escondido." />
+<meta name="robots" content="noindex" />
+<style>
+  @font-face { font-family: "Manrope"; src: url("../manrope-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Manrope"; src: url("../manrope-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+  :root { --bg: #0a0b0e; --cian: #22e4ff; --magenta: #ff2fa0; --tinta: #f3f6fa; --gris: #8a93a2; --panel: rgba(255, 255, 255, 0.05); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; overflow-x: hidden; background: var(--bg); color: var(--tinta); font-family: "Manrope", system-ui, sans-serif; }
+  body {
+    background:
+      radial-gradient(70% 40% at 85% 0%, rgba(255, 47, 160, 0.2), rgba(255, 47, 160, 0) 70%),
+      radial-gradient(70% 40% at 10% 100%, rgba(34, 228, 255, 0.16), rgba(34, 228, 255, 0) 70%),
+      linear-gradient(rgba(140, 170, 200, 0.06) 1px, transparent 1px) 0 0 / 32px 32px,
+      linear-gradient(90deg, rgba(140, 170, 200, 0.06) 1px, transparent 1px) 0 0 / 32px 32px, var(--bg);
+    display: flex; justify-content: center; padding: 24px 16px 40px;
+  }
+  main { width: 100%; max-width: 480px; min-width: 0; }
+  header { text-align: center; }
+  #marca { width: 110px; margin: 0 auto; }
+  h1 { margin-top: 10px; font-size: 28px; font-weight: 800; }
+  .sub { margin-top: 6px; color: var(--gris); font-size: 15px; font-weight: 600; }
+  .buscar { margin-top: 22px; display: flex; gap: 8px; }
+  .buscar input { flex: 1; min-width: 0; padding: 14px 16px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, 0.16); background: var(--panel); color: var(--tinta); font: 600 16px "Manrope", system-ui, sans-serif; }
+  .buscar input:focus { outline: none; border-color: var(--cian); }
+  #resultado { margin-top: 12px; min-height: 22px; font-size: 16px; font-weight: 600; text-align: center; }
+  #resultado b { color: var(--cian); }
+  ol { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
+  li { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--panel); border: 1px solid rgba(255, 255, 255, 0.06); }
+  li.yo { border-color: var(--cian); box-shadow: 0 0 18px rgba(34, 228, 255, 0.25); }
+  .pos { font-weight: 800; font-size: 18px; color: var(--gris); text-align: center; }
+  .pos.p1 { color: #ffd166; } .pos.p2 { color: #cfd6e1; } .pos.p3 { color: #e8a87c; }
+  .quien { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 800; font-size: 16px; }
+  .red { display: inline-block; margin-right: 8px; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; vertical-align: 2px; }
+  .red.instagram { background: rgba(255, 47, 160, 0.18); color: #ff7cc4; }
+  .red.tiktok { background: rgba(34, 228, 255, 0.16); color: var(--cian); }
+  .red.youtube { background: rgba(255, 75, 62, 0.18); color: #ff8a80; }
+  .pts { font-weight: 800; font-size: 18px; color: var(--magenta); }
+  .vacio { margin-top: 18px; padding: 22px; border-radius: 16px; background: var(--panel); text-align: center; color: var(--gris); font-weight: 600; line-height: 1.5; }
+  h2 { margin-top: 32px; font-size: 18px; font-weight: 800; }
+  .mision { margin-top: 12px; padding: 16px; border-radius: 16px; background: var(--panel); border: 1px solid rgba(255, 47, 160, 0.3); }
+  .mision p { font-weight: 600; line-height: 1.45; }
+  .mision .p { color: var(--magenta); font-weight: 800; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .links a { padding: 8px 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); color: var(--tinta); text-decoration: none; font-weight: 800; font-size: 14px; }
+  .reglas { margin-top: 26px; font-size: 13px; color: var(--gris); line-height: 1.55; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div id="marca"></div>
+    <h1>Ranking de misiones</h1>
+    <p class="sub">Cumple la misión de cada video y suma puntos 🎩</p>
+  </header>
+  <form class="buscar" id="form"><input id="q" type="search" placeholder="Busca tu @usuario" autocomplete="off" autocapitalize="none" /></form>
+  <div id="resultado"></div>
+  <ol id="lista"></ol>
+  <div class="vacio" id="vacio" hidden>Todavía nadie completó una misión.<br />¡Puedes ser la primera cuenta del ranking!</div>
+  <h2>Misiones activas</h2>
+  <div id="misiones"></div>
+  <p class="reglas">Cada cuenta suma una vez por misión y por red (Instagram, TikTok y YouTube cuentan por separado). Los puntos
+    se actualizan cada pocas horas. Pronto se podrán canjear por beneficios: las bases se publicarán en esta página.
+    Instagram, TikTok y YouTube no patrocinan ni administran estas misiones. <span id="act"></span></p>
+</main>
+<script src="../logo.js"></script>
+<script>
+  try { const R = LOGO.build(document.getElementById("marca"), { palabra: false, tam: 110 }); R.galera.setAttribute("transform", "rotate(-7 12 14) translate(0 -1.6)"); } catch (e) {}
+  const RED = { instagram: "IG", tiktok: "TIKTOK", youtube: "YOUTUBE" };
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  fetch("ranking.json?v=" + Date.now()).then((r) => r.json()).then((d) => {
+    const lista = document.getElementById("lista");
+    const filas = d.cuentas || [];
+    document.getElementById("vacio").hidden = filas.length > 0;
+    let pos = 0, prev = null;
+    filas.slice(0, 100).forEach((c, i) => {
+      if (c.puntos !== prev) { pos = i + 1; prev = c.puntos; }
+      const li = document.createElement("li");
+      li.dataset.u = c.usuario.toLowerCase();
+      li.innerHTML = `<span class="pos p${pos}">${pos}</span><span class="quien"><span class="red ${esc(c.red)}">${RED[c.red] || esc(c.red)}</span>@${esc(c.usuario)}</span><span class="pts">${c.puntos}</span>`;
+      lista.appendChild(li);
+    });
+    const mis = document.getElementById("misiones");
+    for (const m of d.misiones || []) {
+      const div = document.createElement("div"); div.className = "mision";
+      div.innerHTML = `<p>${esc(m.titulo)} <span class="p">+${m.puntos} puntos</span></p><div class="links">${m.publicaciones.map((p) => `<a href="${esc(p.url)}" rel="noopener">${RED[p.red] || esc(p.red)}</a>`).join("")}</div>`;
+      mis.appendChild(div);
+    }
+    if (d.actualizado) document.getElementById("act").textContent = "Última actualización: " + new Date(d.actualizado).toLocaleString("es", { dateStyle: "short", timeStyle: "short" }) + ".";
+    const buscar = () => {
+      const q = document.getElementById("q").value.trim().replace(/^@/, "").toLowerCase();
+      document.querySelectorAll("#lista li").forEach((li) => li.classList.toggle("yo", !!q && li.dataset.u === q));
+      const res = document.getElementById("resultado");
+      if (!q) { res.textContent = ""; return; }
+      const mias = filas.filter((c) => c.usuario.toLowerCase() === q);
+      res.innerHTML = mias.length ? mias.map((c) => `@${esc(c.usuario)} en ${RED[c.red] || esc(c.red)}: <b>${c.puntos} puntos</b>`).join("<br />") : "Esa cuenta todavía no tiene puntos.";
+    };
+    document.getElementById("q").addEventListener("input", buscar);
+    document.getElementById("form").addEventListener("submit", (e) => { e.preventDefault(); buscar(); });
+  }).catch(() => { document.getElementById("vacio").hidden = false; });
+</script>
+</body>
+</html>
