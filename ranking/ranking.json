@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-17T11:43-03:00",
+ "actualizado": "2026-10-17T14:27-03:00",
  "cuentas": [],
  "misiones": [
   {
@@ -18,6 +18,21 @@
     {
      "red": "youtube",
      "url": "https://youtube.com/shorts/C_sHQgHAlLo"
+    }
+   ]
+  },
+  {
+   "id": "reel02-bolsillito",
+   "titulo": "Escanea el QR del bolsillito del jean y comenta la frase secreta",
+   "puntos": 10,
+   "publicaciones": [
+    {
+     "red": "instagram",
+     "url": "https://www.instagram.com/reel/DemnJ_FCMGM/"
+    },
+    {
+     "red": "youtube",
+     "url": "https://youtube.com/shorts/5x24A7-vLFI"
     }
    ]
   }
