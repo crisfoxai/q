@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Mensaje secreto 2 · El truco escondido</title>
+<meta name="description" content="Encontraste el mensaje escondido en el bolsillito del jean." />
+<meta name="robots" content="noindex" />
+<style>
+  @font-face { font-family: "Manrope"; src: url("../manrope-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Manrope"; src: url("../manrope-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+  :root { --bg: #0a0b0e; --cian: #22e4ff; --magenta: #ff2fa0; --tinta: #f3f6fa; --gris: #8a93a2; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; overflow-x: hidden; background: var(--bg); color: var(--tinta); font-family: "Manrope", system-ui, sans-serif; }
+  body {
+    background:
+      radial-gradient(70% 40% at 85% 0%, rgba(255, 47, 160, 0.22), rgba(255, 47, 160, 0) 70%),
+      radial-gradient(70% 40% at 10% 100%, rgba(34, 228, 255, 0.18), rgba(34, 228, 255, 0) 70%),
+      linear-gradient(rgba(140, 170, 200, 0.06) 1px, transparent 1px) 0 0 / 32px 32px,
+      linear-gradient(90deg, rgba(140, 170, 200, 0.06) 1px, transparent 1px) 0 0 / 32px 32px, var(--bg);
+    display: flex; justify-content: center; padding: 28px 16px 40px;
+  }
+  main { width: 100%; max-width: 420px; min-width: 0; text-align: center; }
+  #marca { width: 150px; margin: 0 auto; }
+  .chip { display: inline-block; margin-top: 18px; font-weight: 800; font-size: 13px; letter-spacing: 0.16em; color: #061015; background: var(--cian); padding: 7px 12px; border-radius: 999px; }
+  h1 { margin-top: 18px; font-size: 18px; line-height: 1.35; font-weight: 600; color: var(--gris); }
+  .frase { position: relative; display: inline-block; margin: 26px 0 8px; padding: 10px 16px; font-size: clamp(26px, 8vw, 36px); font-weight: 800; line-height: 1.15; max-width: calc(100% - 20px); overflow-wrap: anywhere; border: 3px solid var(--magenta); border-radius: 4px; box-shadow: 0 0 30px rgba(255, 47, 160, 0.35); }
+  .frase::before, .frase::after { content: ""; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--magenta); }
+  .frase::before { left: -10px; top: -10px; }
+  .frase::after { right: -10px; bottom: -10px; }
+  p.instr { margin-top: 22px; font-size: 17px; font-weight: 600; line-height: 1.45; }
+  p.instr b { color: var(--cian); }
+  .botones { display: grid; gap: 12px; margin-top: 26px; }
+  .btn { display: block; width: 100%; padding: 17px; border-radius: 16px; font: 800 18px "Manrope", system-ui, sans-serif; text-decoration: none; border: 0; cursor: pointer; }
+  .btn.cian { background: var(--cian); color: #04131a; }
+  .btn.borde { background: rgba(255, 255, 255, 0.06); color: var(--tinta); border: 1.5px solid rgba(255, 255, 255, 0.16); }
+  .shh { margin-top: 26px; font-size: 14px; color: var(--gris); line-height: 1.5; }
+</style>
+</head>
+<body>
+<main>
+  <div id="marca"></div>
+  <div class="chip">🔓 MENSAJE SECRETO</div>
+  <h1>Encontraste lo que escondía el bolsillito del jean</h1>
+  <div class="frase" id="frase">el pantalón sabe la hora</div>
+  <p class="instr">Escríbelo <b>tal cual</b> en los comentarios del video (Instagram, TikTok o YouTube) y suma <b>+10 puntos</b> en el ranking.<br />Los que no lo escanearon no van a entender nada 👀</p>
+  <div class="botones">
+    <button class="btn cian" id="copiar">Copiar la frase</button>
+    <a class="btn borde" id="seguir" href="https://www.instagram.com/eltrucoescondido/">Seguir a @eltrucoescondido</a>
+    <a class="btn borde" id="ranking" href="../ranking/">🏆 Ver el ranking de misiones</a>
+  </div>
+  <p class="shh">Shhh. Desde 1873 ese bolsillito espera un reloj… y hoy guardaba este mensaje 🕰️</p>
+</main>
+<script src="../logo.js"></script>
+<script>
+  // Marca
+  try { const R = LOGO.build(document.getElementById("marca"), { palabra: false, tam: 150 }); R.galera.setAttribute("transform", "rotate(-7 12 14) translate(0 -1.6)"); } catch (e) {}
+  // Contadores anónimos (sin datos personales): escaneos, visitantes únicos de este navegador, copias y clics en Seguir
+  const NS = "eltrucoescondido", PRE = "reel02-v1-";
+  const hit = (k) => { try { fetch("https://abacus.jasoncameron.dev/hit/" + NS + "/" + PRE + k, { mode: "cors", keepalive: true }).catch(() => {}); } catch (e) {} };
+  hit("escaneo");
+  try { if (!localStorage.getItem("etc-reel02")) { localStorage.setItem("etc-reel02", "1"); hit("unico"); } } catch (e) {}
+  document.getElementById("copiar").addEventListener("click", async (ev) => {
+    hit("copiar");
+    try { await navigator.clipboard.writeText("el pantalón sabe la hora"); ev.target.textContent = "¡Copiada! Ahora pégala en los comentarios"; } catch (e) { ev.target.textContent = "Mantén presionada la frase para copiarla"; }
+  });
+  document.getElementById("seguir").addEventListener("click", () => hit("seguir"));
+</script>
+</body>
+</html>
