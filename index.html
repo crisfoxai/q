@@ -11,7 +11,7 @@
   @font-face { font-family: "Manrope"; src: url("manrope-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
   :root { --bg: #0a0b0e; --cian: #22e4ff; --magenta: #ff2fa0; --tinta: #f3f6fa; --gris: #8a93a2; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { min-height: 100%; background: var(--bg); color: var(--tinta); font-family: "Manrope", system-ui, sans-serif; }
+  html, body { min-height: 100%; overflow-x: hidden; background: var(--bg); color: var(--tinta); font-family: "Manrope", system-ui, sans-serif; }
   body {
     background:
       radial-gradient(70% 40% at 85% 0%, rgba(255, 47, 160, 0.22), rgba(255, 47, 160, 0) 70%),
@@ -20,15 +20,15 @@
       linear-gradient(90deg, rgba(140, 170, 200, 0.06) 1px, transparent 1px) 0 0 / 32px 32px, var(--bg);
     display: flex; justify-content: center; padding: 28px 16px 40px;
   }
-  main { width: 100%; max-width: 440px; text-align: center; }
+  main { width: 100%; max-width: 420px; min-width: 0; text-align: center; }
   #marca { width: 150px; margin: 0 auto; }
   .chip { display: inline-block; margin-top: 18px; font-weight: 800; font-size: 13px; letter-spacing: 0.16em; color: #061015; background: var(--cian); padding: 7px 12px; border-radius: 999px; }
-  h1 { margin-top: 18px; font-size: 20px; font-weight: 600; color: var(--gris); }
-  .frase { position: relative; display: inline-block; margin: 26px 0 8px; padding: 10px 16px; font-size: clamp(30px, 9vw, 40px); font-weight: 800; line-height: 1.15; border: 3px solid var(--magenta); border-radius: 4px; box-shadow: 0 0 30px rgba(255, 47, 160, 0.35); }
+  h1 { margin-top: 18px; font-size: 18px; line-height: 1.35; font-weight: 600; color: var(--gris); }
+  .frase { position: relative; display: inline-block; margin: 26px 0 8px; padding: 10px 16px; font-size: clamp(26px, 8vw, 36px); font-weight: 800; line-height: 1.15; max-width: calc(100% - 20px); overflow-wrap: anywhere; border: 3px solid var(--magenta); border-radius: 4px; box-shadow: 0 0 30px rgba(255, 47, 160, 0.35); }
   .frase::before, .frase::after { content: ""; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--magenta); }
   .frase::before { left: -10px; top: -10px; }
   .frase::after { right: -10px; bottom: -10px; }
-  p.instr { margin-top: 22px; font-size: 18px; font-weight: 600; line-height: 1.45; }
+  p.instr { margin-top: 22px; font-size: 17px; font-weight: 600; line-height: 1.45; }
   p.instr b { color: var(--cian); }
   .botones { display: grid; gap: 12px; margin-top: 26px; }
   .btn { display: block; width: 100%; padding: 17px; border-radius: 16px; font: 800 18px "Manrope", system-ui, sans-serif; text-decoration: none; border: 0; cursor: pointer; }
